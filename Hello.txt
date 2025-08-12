@@ -1,4 +1,8 @@
 my new git 
 second new edit
 hello world
+<<<<<<< HEAD
 innovative solutions
+=======
+brilliant solutions
+>>>>>>> dupe
