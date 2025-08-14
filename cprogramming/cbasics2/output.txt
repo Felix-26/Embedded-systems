@@ -1,0 +1,8 @@
+main1
+
+
+felix@myserver:~/entri/cprogramming/cbasics2$ ./a.out
+30
+
+
+
