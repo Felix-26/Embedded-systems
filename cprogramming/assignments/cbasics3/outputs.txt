@@ -30,3 +30,7 @@ felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
 x is a non zero number.
 
 
+implicit6.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+A is typecasted to 65
