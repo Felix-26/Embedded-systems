@@ -1,0 +1,59 @@
+main1
+
+felix@myserver:~/entri/cbasics3$ ./a.out
+enter the numbers a and b
+32
+3
+the sum of 2 numbers is 35
+0x7ffd08ecbecc : a
+0x7ffd08ecbed0 : b
+0x7ffd08ecbed4 : result
+
+
+main2
+
+
+felix@myserver:~/entri/cbasics3$ ./a.out
+enter the numbers a and b:
+32
+5
+select the function to be done:
+1.add
+2.sub
+3.mul
+4.div
+1
+sum = 37
+felix@myserver:~/entri/cbasics3$ ./a.out
+enter the numbers a and b:
+32
+5
+select the function to be done:
+1.add
+2.sub
+3.mul
+4.div
+2
+dif = 27
+felix@myserver:~/entri/cbasics3$ ./a.out
+enter the numbers a and b:
+32
+5
+select the function to be done:
+1.add
+2.sub
+3.mul
+4.div
+3
+pro = 160
+felix@myserver:~/entri/cbasics3$ ./a.out
+enter the numbers a and b:
+32
+5
+select the function to be done:
+1.add
+2.sub
+3.mul
+4.div
+4
+quo = 6.400000
