@@ -1,0 +1,32 @@
+implicit1.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+5
+10.000000
+
+implicit2.c
+
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+7.500000
+
+
+implicit3.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+10.000000
+
+implicit4.c
+
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+5.000000
+
+
+implicit5.c
+
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+x is a non zero number.
+
+
