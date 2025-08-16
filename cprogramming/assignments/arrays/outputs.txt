@@ -1,0 +1,49 @@
+main1.c
+
+felix@myserver:~/entri/cprogramming/assignments/arrays$ ./a.out
+0x7ffdb9ebd4b0          1
+0x7ffdb9ebd4b4          2
+0x7ffdb9ebd4b8          3
+0x7ffdb9ebd4bc          4
+0x7ffdb9ebd4c0          5
+0x7ffdb9ebd4c4          6
+0x7ffdb9ebd4c8          7
+0x7ffdb9ebd4cc          8
+0x7ffdb9ebd4d0          9
+0x7ffdb9ebd4d4          10
+
+
+main2.c
+
+felix@myserver:~/entri/cprogramming/assignments/arrays$ ./a.out
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+main3.c
+
+felix@myserver:~/entri/cprogramming/assignments/arrays$ ./a.out
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+
+
+main4.c
+
+felix@myserver:~/entri/cprogramming/assignments/arrays$ ./a.out
+the two pointers points to the same location.
