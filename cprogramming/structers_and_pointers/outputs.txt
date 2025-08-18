@@ -1,0 +1,56 @@
+main1.c
+
+felix@myserver:~/entri/cprogramming/structers_and_pointers$ ./a.out
+size of int = 4
+size of float = 4
+size of char = 1
+size of double = 8
+
+main2.c
+
+felix@myserver:~/entri/cprogramming/structers_and_pointers$ ./a.out
+size of struct test = 3
+
+main3.c
+
+felix@myserver:~/entri/cprogramming/structers_and_pointers$ ./a.out
+value of the variable x = 23
+address of variable x = 0x7ffdbd2106e8
+content of pointer p = 0x7ffdbd2106e8
+content inside address stored by pointer p = 23
+address of the pointer p = 0x7ffdbd2106f0
+*&x = 23
+
+value of the variable y = 22
+address of variable y = 0x7ffdbd2106e4
+content of pointer q = 0x7ffdbd2106e4
+content inside address stored by pointer q = 22
+address of the pointer q = 0x7ffdbd2106f8
+
+value of the variable z = 24
+address of variable z = 0x7ffdbd2106ec
+content of pointer r = 0x7ffdbd2106ec
+content inside address stored by pointer r = 24
+address of the pointer r = 0x7ffdbd210700
+
+main4.c
+
+felix@myserver:~/entri/cprogramming/structers_and_pointers$ ./a.out
+address stored by pointer = 0x7ffc825a0630
+content of address stored by pointer = 2025
+
+assignment.c
+
+felix@myserver:~/entri/cprogramming/structers_and_pointers$ ./a.out
+INDEX   VALUE   ADDRESS
+
+0       20      0x7fff8dad0e20
+1       21      0x7fff8dad0e24
+2       22      0x7fff8dad0e28
+3       23      0x7fff8dad0e2c
+4       24      0x7fff8dad0e30
+5       25      0x7fff8dad0e34
+6       26      0x7fff8dad0e38
+7       27      0x7fff8dad0e3c
+8       28      0x7fff8dad0e40
+9       29      0x7fff8dad0e44

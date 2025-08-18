@@ -10,5 +10,5 @@ struct Test {
 };
 
 int main() {
-	printf("%ld",sizeof(struct Test));
+	printf("size of struct test = %ld",sizeof(struct Test));
 }
