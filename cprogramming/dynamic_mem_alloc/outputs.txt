@@ -1,0 +1,69 @@
+main1.c
+
+felix@myserver:~/entri/cprogramming$ ./a.out
+*p = 10
+*ptr = 10
+address = 0x7ffeb2d6f624
+after *p=30
+*p = 30
+*ptr = 30
+address = 0x7ffeb2d6f624
+after *((int *)ptr)=40
+*p = 40
+*ptr = 40
+address = 0x7ffeb2d6f624
+
+main2.c
+
+felix@myserver:~/entri/cprogramming$ ./a.out
+1.000000  22.000000  41.000000  5.000000  6.000000
+
+main3.c
+
+felix@myserver:~/entri/cprogramming$ ./a.out
+Enter the number of integers you need to store : 2
+0x6417c0a5fac0tr
+1
+2
+
+1       2
+0x6417c0a5fac0tr
+
+main4.c
+
+felix@myserver:~/entri/cprogramming$ ./a.out
+Enter the number of integers you need to store : 4
+1
+2
+3
+4
+
+1      2      3      4
+
+main5.c
+
+felix@myserver:~/entri/cprogramming$ ./a.out
+Enter the number of integers you need to store : 2
+
+enter the elements :
+1
+2
+array = 1  2
+do you need to store more elements type 1 if you do otherwise type 0 :1
+how many more elements you need to add : 2
+
+enter the elements :
+3
+4
+array = 1  2  3  4
+do you need to store more elements type 1 if you do otherwise type 0 :1
+how many more elements you need to add : 5
+
+enter the elements :
+5
+6
+7
+8
+9
+array = 1  2  3  4  5  6  7  8  9
+do you need to store more elements type 1 if you do otherwise type 0 :0
