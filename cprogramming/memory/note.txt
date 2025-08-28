@@ -1,0 +1,29 @@
++-----------------------+
+|      Stack            |  <--- High memory addresses
++-----------------------+
+|      Heap             |
++-----------------------+
+| Uninitialized Data    |  (BSS)
++-----------------------+
+| Initialized Data      |
++-----------------------+
+|      Text (Code)      |  <--- Low memory addresses
+
+The memory layout of a C program is typically divided into several segments:
+
+Text Segment (Code Segment):
+
+Contains the compiled machine code (instructions) of your program.
+Read-only to prevent accidental modification.
+Data Segment:
+
+Initialized Data Segment: Stores global and static variables that are initialized by the programmer.
+Uninitialized Data Segment (BSS): Stores global and static variables that are not explicitly initialized (default to zero).
+Heap:
+
+Used for dynamic memory allocation (e.g., via malloc, calloc, realloc).
+Grows upwards as memory is allocated at runtime.
+Stack:
+
+Stores local variables, function parameters, and return addresses.
+Grows downwards as functions are called and shrinks as they return.
