@@ -1,0 +1,294 @@
+1)Explain memory layout of c program.
+
+
+
++-----------------------+
+|      Stack            |  <--- High memory addresses
++-----------------------+
+|      Heap             |
++-----------------------+
+| Uninitialized Data    |  (BSS)
++-----------------------+
+| Initialized Data      |
++-----------------------+
+|      Text (Code)      |  <--- Low memory addresses
+
+The memory layout of a C program is typically divided into several segments:
+
+Text Segment (Code Segment):
+
+Contains the compiled machine code (instructions) of your program.
+Read-only to prevent accidental modification.
+Data Segment:
+
+Initialized Data Segment: Stores global and static variables that are initialized by the programmer.
+Uninitialized Data Segment (BSS): Stores global and static variables that are not explicitly initialized (default to zero).
+Heap:
+
+Used for dynamic memory allocation (e.g., via malloc, calloc, realloc).
+Grows upwards as memory is allocated at runtime.
+Stack:
+
+Stores local variables, function parameters, and return addresses.
+Grows downwards as functions are called and shrinks as they return.
+
+
+
+
+2)What is call by value and call by reference.
+
+
+
+
+1. Call by Value
+In call by value, a copy of the actual parameter is passed to the function.
+The function works on this copy, so changes made inside the function do not affect the original variable.
+
+2. Call by Reference
+In call by reference, the address of the variable is passed to the function.
+The function can access and modify the original variable directly using pointers.
+
+
+
+
+3)Storage classes in c.
+
+
+
+Good one 👍. In **C**, *storage classes* define **the scope (visibility), lifetime, and linkage** of variables/functions.
+There are **4 main storage classes**:
+
+---
+
+## 1. **Automatic (`auto`)**
+
+* Default for local variables inside a function.
+* Created when the function is called, destroyed when the function ends.
+* Stored in **stack** memory.
+* Scope: **local to the block**.
+* Lifetime: **till function returns**.
+
+```c
+#include <stdio.h>
+
+void func() {
+    auto int x = 10;   // "auto" keyword is optional
+    printf("%d\n", x);
+}
+
+int main() {
+    func();   // prints 10
+}
+```
+
+---
+
+## 2. **Register (`register`)**
+
+* Requests the compiler to store the variable in a **CPU register** (faster access).
+* Scope: **local to the block**.
+* Lifetime: **till function returns**.
+* Cannot use `&` (address-of operator) on register variables (since they may not be in RAM).
+
+```c
+#include <stdio.h>
+
+int main() {
+    register int i;
+    for(i = 0; i < 5; i++)
+        printf("%d ", i);
+    return 0;
+}
+```
+
+---
+
+## 3. **Static (`static`)**
+
+* Retains its **value between function calls**.
+* Scope:
+
+  * Inside a function → visible only in that function.
+  * At global level → visible only in that file (internal linkage).
+* Lifetime: **till program ends**.
+
+```c
+#include <stdio.h>
+
+void counter() {
+    static int count = 0;  // initialized only once
+    count++;
+    printf("Count = %d\n", count);
+}
+
+int main() {
+    counter(); // 1
+    counter(); // 2
+    counter(); // 3
+}
+```
+
+---
+
+## 4. **External (`extern`)**
+
+* Used to declare a **global variable or function** that is defined in another file or later in the same file.
+* Scope: **global** across files.
+* Lifetime: **till program ends**.
+
+```c
+// file1.c
+#include <stdio.h>
+int num = 10;   // global variable
+
+// file2.c
+#include <stdio.h>
+extern int num; // declaration, defined in file1.c
+int main() {
+    printf("%d\n", num);
+    return 0;
+}
+```
+
+---
+
+### 🔑 **Summary Table**
+
+| Storage Class | Scope        | Lifetime           | Default Value | Memory Location         |
+| ------------- | ------------ | ------------------ | ------------- | ----------------------- |
+| **auto**      | Local        | Till function ends | Garbage       | Stack                   |
+| **register**  | Local        | Till function ends | Garbage       | CPU register (or stack) |
+| **static**    | Local/Global | Till program ends  | 0             | Data segment            |
+| **extern**    | Global       | Till program ends  | 0             | Data segment            |
+
+---
+
+
+
+4)What is the difference between malloc and calloc?
+
+
+
+5)size of data types, sizeof()
+
+
+
+6) What is the size of a pointer
+
+
+
+7)What is memory leak?
+
+
+
+8)What is volitile in c?
+
+
+The volatile keyword in C is a type qualifier that tells the compiler a variable's value may change at any time—without any action by the surrounding code or compiler itself. This prevents the compiler from applying certain optimizations that assume the variable's value does not change unexpectedly.
+
+
+
+9)What is dangling pointer, wild pointer, nul pointer, void pointer?
+
+
+dangling
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *ptr = (int*)malloc(sizeof(int));
+    *ptr = 10;
+    free(ptr);  // Memory is freed
+    // ptr is now dangling as it points to freed memory
+
+    // Accessing *ptr here is dangerous and undefined
+    // printf("%d\n", *ptr); // Unsafe
+
+    ptr = NULL; // Prevent dangling pointer by resetting
+    return 0;
+}
+
+wild
+
+#include <stdio.h>
+
+int main() {
+    int *ptr; // 'ptr' is a wild pointer here, as it's uninitialized.
+
+    // Attempting to dereference 'ptr' at this point would lead to undefined behavior.
+    // *ptr = 10; // This line is dangerous and should be avoided.
+
+    // To prevent wild pointers, always initialize them:
+    int *safe_ptr = NULL; // Initialized to NULL
+    int value = 5;
+    safe_ptr = &value; // Initialized to a valid address
+
+    printf("Value pointed to by safe_ptr: %d\n", *safe_ptr);
+
+    return 0;
+}
+
+void
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int num = 10;
+    float pi = 3.14f;
+
+    void *genericPtr; // Declare a void pointer
+
+    genericPtr = &num; // Point to an integer
+    printf("Integer value: %d\n", *(int*)genericPtr); // Typecast and dereference
+
+    genericPtr = &pi; // Point to a float
+    printf("Float value: %.2f\n", *(float*)genericPtr); // Typecast and dereference
+
+    return 0;
+}
+
+null
+
+    int *ptr = NULL; // Declares an integer pointer and initializes it to NULL
+
+
+
+10)Explain build steps in c?
+
+
+
+The C build process, which transforms C source code into an executable program, involves several distinct steps:
+Preprocessing:
+This is the initial stage where the C preprocessor handles directives indicated by a # symbol. This includes expanding macros (#define), incorporating header files (#include), and conditional compilation (#if, #ifdef, etc.). The output is an expanded source file, typically with a .i extension.
+Compilation:
+The preprocessed code is then passed to the C compiler. The compiler translates the C code into assembly language instructions specific to the target processor architecture. This stage also performs syntax and semantic checks. The output is an assembly file, usually with a .s extension.
+Assembly:
+An assembler takes the assembly language code generated in the previous step and converts it into machine code (binary instructions) known as object code. This object code is not yet an executable program as it may contain references to functions or data defined in other files or libraries. The output is an object file, typically with a .o or .obj extension.
+Linking:
+The final stage involves the linker. The linker combines one or more object files, along with necessary library files (e.g., standard C library functions), to resolve external references and create a single, executable program. This executable file contains all the machine code required to run the program. On Windows, it often has a .exe extension, while on Unix-like systems, it might be named a.out by default or a name specified by the user.
+
+
+
+11) WHat is implicit type casting and explicit type casting
+
+
+
+
+12) What is structure padding and packing?
+
+
+
+
+13) Write a c code to find the no.of 0's ans 1's in a user input value
+
+
+
+
+14) What is inline function, reentered function?
+
+
+
+
+15) What is the difference between structure and union. What is the syntax of union?

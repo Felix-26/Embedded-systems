@@ -26,11 +26,11 @@ int main() {
 	printf("enter a number : ");
 	scanf("%d",&x);
 	printBin(x);
-	printf("enter the set bit position :\t");
-	scanf("%d",&pos);
-	setBit(pos,&x);
-	printf("enter the clear bit position :\t");
-	scanf("%d",&pos);
-	clearBit(pos,&x);
+//	printf("enter the set bit position :\t");
+//	scanf("%d",&pos);
+//	setBit(pos,&x);
+//	printf("enter the clear bit position :\t");
+//	scanf("%d",&pos);
+//	clearBit(pos,&x);
 	return 0;
 }
