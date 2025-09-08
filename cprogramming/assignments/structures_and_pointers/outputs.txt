@@ -1,0 +1,12 @@
+INDEX   VALUE   ADDRESS
+
+0       20      0x7ffc1f6f3120
+1       21      0x7ffc1f6f3124
+2       22      0x7ffc1f6f3128
+3       23      0x7ffc1f6f312c
+4       24      0x7ffc1f6f3130
+5       25      0x7ffc1f6f3134
+6       26      0x7ffc1f6f3138
+7       27      0x7ffc1f6f313c
+8       28      0x7ffc1f6f3140
+9       29      0x7ffc1f6f3144

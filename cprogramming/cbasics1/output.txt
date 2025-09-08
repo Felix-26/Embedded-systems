@@ -1,0 +1,4 @@
+main
+
+felix@myserver:~/entri/cbasics1$ ./a.out
+Hello world

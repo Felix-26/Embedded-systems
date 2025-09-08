@@ -1,0 +1,65 @@
+implicit1.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+5
+10.000000
+
+implicit2.c
+
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+7.500000
+
+
+implicit3.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+10.000000
+
+implicit4.c
+
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+5.000000
+
+
+implicit5.c
+
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+x is a non zero number
+
+
+implicit6.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+A is typecasted to 65
+
+explict1.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+5
+7.00
+
+explicit2.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+44
+
+explicit3.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+3.1411592960
+
+explicit4.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+10
+0x7ffcc7e3f1e4
+
+explicit5.c
+
+felix@myserver:~/entri/cprogramming/assignments/cbasics3$ ./a.out
+2.50
+
+
