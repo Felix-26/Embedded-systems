@@ -12,14 +12,14 @@
 int main(void)
 {
 	// set PD3 as OUTPUT.
-    DDRD = (1<<3);
+    DDRD = (1<<DDB3);
     while (1) 
     {
 		// set PD3 HIGH
-		PORTD |= (1<<3);
+		PORTD |= (1<<PORTD3);
 		_delay_ms(500);
 		// set PD3 LOW
-		PORTD &= ~(1<<3);
+		PORTD &= ~(1<<PORTD3);
 		_delay_ms(500); 
     }
 }
