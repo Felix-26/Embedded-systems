@@ -1,0 +1,192 @@
+
+DC_motor2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000168  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000114  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000168  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000198  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000038  00000000  00000000  000001d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000811  00000000  00000000  00000210  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000069c  00000000  00000000  00000a21  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002fa  00000000  00000000  000010bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  000013b8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000039f  00000000  00000000  0000140c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000d8  00000000  00000000  000017ab  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000028  00000000  00000000  00001883  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   8:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  10:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  14:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  18:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  1c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  20:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  24:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  28:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  2c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  30:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  34:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  38:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  3c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  40:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  44:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  48:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  4c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  50:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  54:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  58:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  5c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  60:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  64:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 55 00 	call	0xaa	; 0xaa <main>
+  78:	0c 94 88 00 	jmp	0x110	; 0x110 <_exit>
+
+0000007c <__bad_interrupt>:
+  7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000080 <motorCW>:
+#define F_CPU 16000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+
+void motorCW() {
+	PORTC |= (1<<PORTC4);
+  80:	88 b1       	in	r24, 0x08	; 8
+  82:	80 61       	ori	r24, 0x10	; 16
+  84:	88 b9       	out	0x08, r24	; 8
+	PORTC &= ~(1<<PORTC5);
+  86:	88 b1       	in	r24, 0x08	; 8
+  88:	8f 7d       	andi	r24, 0xDF	; 223
+  8a:	88 b9       	out	0x08, r24	; 8
+  8c:	08 95       	ret
+
+0000008e <motorSTP>:
+}
+
+void motorSTP() {
+	PORTC &= ~(1<<PORTC4);
+  8e:	88 b1       	in	r24, 0x08	; 8
+  90:	8f 7e       	andi	r24, 0xEF	; 239
+  92:	88 b9       	out	0x08, r24	; 8
+	PORTC &= ~(1<<PORTC5);
+  94:	88 b1       	in	r24, 0x08	; 8
+  96:	8f 7d       	andi	r24, 0xDF	; 223
+  98:	88 b9       	out	0x08, r24	; 8
+  9a:	08 95       	ret
+
+0000009c <motorCCW>:
+}
+
+void motorCCW() {
+	PORTC &= ~(1<<PORTC4);
+  9c:	88 b1       	in	r24, 0x08	; 8
+  9e:	8f 7e       	andi	r24, 0xEF	; 239
+  a0:	88 b9       	out	0x08, r24	; 8
+	PORTC |= (1<<PORTC5);
+  a2:	88 b1       	in	r24, 0x08	; 8
+  a4:	80 62       	ori	r24, 0x20	; 32
+  a6:	88 b9       	out	0x08, r24	; 8
+  a8:	08 95       	ret
+
+000000aa <main>:
+}
+
+int main(void)
+{
+    DDRC |= (1<<DDC5);
+  aa:	87 b1       	in	r24, 0x07	; 7
+  ac:	80 62       	ori	r24, 0x20	; 32
+  ae:	87 b9       	out	0x07, r24	; 7
+	DDRC |= (1<<DDC4);
+  b0:	87 b1       	in	r24, 0x07	; 7
+  b2:	80 61       	ori	r24, 0x10	; 16
+  b4:	87 b9       	out	0x07, r24	; 7
+    while (1) 
+    {
+		motorCW();
+  b6:	0e 94 40 00 	call	0x80	; 0x80 <motorCW>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ba:	2f ef       	ldi	r18, 0xFF	; 255
+  bc:	81 e1       	ldi	r24, 0x11	; 17
+  be:	9a e7       	ldi	r25, 0x7A	; 122
+  c0:	21 50       	subi	r18, 0x01	; 1
+  c2:	80 40       	sbci	r24, 0x00	; 0
+  c4:	90 40       	sbci	r25, 0x00	; 0
+  c6:	e1 f7       	brne	.-8      	; 0xc0 <main+0x16>
+  c8:	00 c0       	rjmp	.+0      	; 0xca <main+0x20>
+  ca:	00 00       	nop
+		_delay_ms(2500);
+		motorSTP();
+  cc:	0e 94 47 00 	call	0x8e	; 0x8e <motorSTP>
+  d0:	2f ef       	ldi	r18, 0xFF	; 255
+  d2:	81 e1       	ldi	r24, 0x11	; 17
+  d4:	9a e7       	ldi	r25, 0x7A	; 122
+  d6:	21 50       	subi	r18, 0x01	; 1
+  d8:	80 40       	sbci	r24, 0x00	; 0
+  da:	90 40       	sbci	r25, 0x00	; 0
+  dc:	e1 f7       	brne	.-8      	; 0xd6 <main+0x2c>
+  de:	00 c0       	rjmp	.+0      	; 0xe0 <main+0x36>
+  e0:	00 00       	nop
+		_delay_ms(2500);
+		motorCCW();
+  e2:	0e 94 4e 00 	call	0x9c	; 0x9c <motorCCW>
+  e6:	2f ef       	ldi	r18, 0xFF	; 255
+  e8:	81 e1       	ldi	r24, 0x11	; 17
+  ea:	9a e7       	ldi	r25, 0x7A	; 122
+  ec:	21 50       	subi	r18, 0x01	; 1
+  ee:	80 40       	sbci	r24, 0x00	; 0
+  f0:	90 40       	sbci	r25, 0x00	; 0
+  f2:	e1 f7       	brne	.-8      	; 0xec <main+0x42>
+  f4:	00 c0       	rjmp	.+0      	; 0xf6 <main+0x4c>
+  f6:	00 00       	nop
+		_delay_ms(2500);
+		motorSTP();
+  f8:	0e 94 47 00 	call	0x8e	; 0x8e <motorSTP>
+  fc:	2f ef       	ldi	r18, 0xFF	; 255
+  fe:	81 e1       	ldi	r24, 0x11	; 17
+ 100:	9a e7       	ldi	r25, 0x7A	; 122
+ 102:	21 50       	subi	r18, 0x01	; 1
+ 104:	80 40       	sbci	r24, 0x00	; 0
+ 106:	90 40       	sbci	r25, 0x00	; 0
+ 108:	e1 f7       	brne	.-8      	; 0x102 <main+0x58>
+ 10a:	00 c0       	rjmp	.+0      	; 0x10c <main+0x62>
+ 10c:	00 00       	nop
+ 10e:	d3 cf       	rjmp	.-90     	; 0xb6 <main+0xc>
+
+00000110 <_exit>:
+ 110:	f8 94       	cli
+
+00000112 <__stop_program>:
+ 112:	ff cf       	rjmp	.-2      	; 0x112 <__stop_program>
