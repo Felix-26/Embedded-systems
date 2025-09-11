@@ -11,9 +11,9 @@
 int main(void)
 {
 	// set PD3 as OUTPUT
-    DDRD = (1<<3);
+    DDRD |= (1<<DDB3);
 	// set PC0 as INPUT 
-	DDRC = 0;
+	DDRC &= ~(1<<DDC0);
 	while (1) 
     {
 		// if PC0 receive HIGH signal
