@@ -6,7 +6,7 @@
  */ 
 
 #define F_CPU 16000000UL
-#define DELAY 2500
+#define DELAY 2500                             // this only allows you to provide one delay value to all the three functions. We need freedom to provide 3 diffrent values. Pls chnage 
 #include <avr/io.h>
 #include <util/delay.h>
 
