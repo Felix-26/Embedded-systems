@@ -5,8 +5,7 @@
  * Author : felix
  */ 
 
-#define F_CPU 16000000UL
-#define DELAY 2500                             // this only allows you to provide one delay value to all the three functions. We need freedom to provide 3 diffrent values. Pls chnage 
+#define F_CPU 16000000UL                            
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -45,10 +44,10 @@ int main(void)
 	DDRC |= (1<<DDC5);
     while (1) 
     {
-		motorCW(DELAY);
-		motorSTP(DELAY);
-		motorCCW(DELAY);
-		motorSTP(DELAY);	
+		motorCW(2500);
+		motorSTP(1000);
+		motorCCW(1500);
+		motorSTP(1200);	
     }
 }
 

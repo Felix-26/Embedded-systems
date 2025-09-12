@@ -72,7 +72,7 @@ Disassembly of section .text:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000080 <motorCW>:
-#define DELAY 2500
+#define F_CPU 16000000UL                            
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -206,21 +206,21 @@ int main(void)
   f0:	87 b9       	out	0x07, r24	; 7
     while (1) 
     {
-		motorCW(DELAY);
+		motorCW(2500);
   f2:	84 ec       	ldi	r24, 0xC4	; 196
   f4:	99 e0       	ldi	r25, 0x09	; 9
   f6:	0e 94 40 00 	call	0x80	; 0x80 <motorCW>
-		motorSTP(DELAY);
-  fa:	84 ec       	ldi	r24, 0xC4	; 196
-  fc:	99 e0       	ldi	r25, 0x09	; 9
+		motorSTP(1000);
+  fa:	88 ee       	ldi	r24, 0xE8	; 232
+  fc:	93 e0       	ldi	r25, 0x03	; 3
   fe:	0e 94 62 00 	call	0xc4	; 0xc4 <motorSTP>
-		motorCCW(DELAY);
- 102:	84 ec       	ldi	r24, 0xC4	; 196
- 104:	99 e0       	ldi	r25, 0x09	; 9
+		motorCCW(1500);
+ 102:	8c ed       	ldi	r24, 0xDC	; 220
+ 104:	95 e0       	ldi	r25, 0x05	; 5
  106:	0e 94 51 00 	call	0xa2	; 0xa2 <motorCCW>
-		motorSTP(DELAY);	
- 10a:	84 ec       	ldi	r24, 0xC4	; 196
- 10c:	99 e0       	ldi	r25, 0x09	; 9
+		motorSTP(1200);	
+ 10a:	80 eb       	ldi	r24, 0xB0	; 176
+ 10c:	94 e0       	ldi	r25, 0x04	; 4
  10e:	0e 94 62 00 	call	0xc4	; 0xc4 <motorSTP>
  112:	ef cf       	rjmp	.-34     	; 0xf2 <main+0xc>
 
