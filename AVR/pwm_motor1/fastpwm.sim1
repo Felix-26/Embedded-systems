@@ -1,6 +1,6 @@
 <circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
 
-<item itemtype="MCU" CircId="mega328-8" mainComp="false" Show_id="true" Show_Val="false" Pos="-424,-180" rotation="0" hflip="1" vflip="1" label="mega328-8" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="../../Users/felix/Desktop/entri/AVR/pwm_motor1/pwm_motor1/Debug/pwm_motor1.hex" Auto_Load="false" saveEepr="true" Logic_Symbol="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" Clk_Out="false" MainMcu="true" SerialMon="-1" />
+<item itemtype="MCU" CircId="mega328-8" mainComp="false" Show_id="true" Show_Val="false" Pos="-424,-180" rotation="0" hflip="1" vflip="1" label="mega328-8" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="pwm_motor1/Debug/pwm_motor1.hex" Auto_Load="false" saveEepr="true" Logic_Symbol="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" Clk_Out="false" MainMcu="true" SerialMon="-1" />
 
 <item itemtype="DcMotor" CircId="DcMotor-9" mainComp="false" Show_id="true" Show_Val="false" Pos="-268,60" rotation="0" hflip="1" vflip="1" label="DcMotor-9" idLabPos="-22,-48" labelrot="0" valLabPos="-14,36" valLabRot="0" RPM_Nominal="60 _RPM" Volt_Nominal="5 V" Resistance="100 Ω" />
 
@@ -14,13 +14,13 @@
 
 <item itemtype="Oscope" CircId="Oscope-31" mainComp="false" Show_id="false" Show_Val="false" Pos="-592,-232" rotation="0" hflip="1" vflip="1" label="Oscope-31" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _px" Basic_Y="135 _px" BufferSize="600000" connectGnd="true" InputImped="10 MΩ" TimDiv="1000000000" TimPos="0,0,0,0," VolDiv="1,1,1,1," Tunnels=",,,," Trigger="4" Filter="0.1 V" AutoSC="4" Tracks="1" HideCh="false,false,false,false," VolPos="0,0,0,0," />
 
-<item itemtype="Push" CircId="Push-40" mainComp="false" Show_id="false" Show_Val="false" Pos="-296,-144" rotation="0" hflip="1" vflip="1" label="Push-40" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
+<item itemtype="Push" CircId="Push-40" mainComp="false" Show_id="true" Show_Val="false" Pos="-296,-176" rotation="0" hflip="1" vflip="1" label="100%" idLabPos="-11.098,-27.9216" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
 
-<item itemtype="Push" CircId="Push-43" mainComp="false" Show_id="false" Show_Val="false" Pos="-296,-108" rotation="0" hflip="1" vflip="1" label="Push-43" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
+<item itemtype="Push" CircId="Push-43" mainComp="false" Show_id="true" Show_Val="false" Pos="-296,-128" rotation="0" hflip="1" vflip="1" label="75%" idLabPos="-9.13727,-28.4118" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
 
-<item itemtype="Push" CircId="Push-45" mainComp="false" Show_id="false" Show_Val="false" Pos="-296,-72" rotation="0" hflip="1" vflip="1" label="Push-45" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
+<item itemtype="Push" CircId="Push-45" mainComp="false" Show_id="true" Show_Val="false" Pos="-296,-84" rotation="0" hflip="1" vflip="1" label="50%" idLabPos="-7.17648,-25.9608" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
 
-<item itemtype="Push" CircId="Push-47" mainComp="false" Show_id="false" Show_Val="false" Pos="-296,-36" rotation="0" hflip="1" vflip="1" label="Push-47" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
+<item itemtype="Push" CircId="Push-47" mainComp="false" Show_id="true" Show_Val="false" Pos="-296,-36" rotation="0" hflip="1" vflip="1" label="25%" idLabPos="-9.13727,-23.5098" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" />
 
 <item itemtype="Node" CircId="Node-39" mainComp="false" Pos="-460,-84" />
 
@@ -44,17 +44,17 @@
 
 <item itemtype="Connector" uid="Connector-86" startpinid="Node-39-2" endpinid="Oscope-31-Pin3" pointList="-460,-84,-700,-84,-700,-184,-680,-184" />
 
-<item itemtype="Connector" uid="Connector-88" startpinid="mega328-8-PORTB4" endpinid="Push-40-pinP0" pointList="-384,-92,-348,-92,-348,-144,-312,-144" />
+<item itemtype="Connector" uid="Connector-88" startpinid="mega328-8-PORTB4" endpinid="Push-40-pinP0" pointList="-384,-92,-348,-92,-348,-176,-312,-176" />
 
-<item itemtype="Connector" uid="Connector-97" startpinid="mega328-8-PORTB3" endpinid="Push-43-pinP0" pointList="-384,-84,-332,-84,-332,-108,-312,-108" />
+<item itemtype="Connector" uid="Connector-97" startpinid="mega328-8-PORTB3" endpinid="Push-43-pinP0" pointList="-384,-84,-332,-84,-332,-128,-312,-128" />
 
-<item itemtype="Connector" uid="Connector-98" startpinid="Push-43-switch0pinN" endpinid="Node-44-1" pointList="-280,-108,-232,-108,-232,-104" />
+<item itemtype="Connector" uid="Connector-98" startpinid="Push-43-switch0pinN" endpinid="Node-44-1" pointList="-280,-128,-232,-128,-232,-104" />
 
-<item itemtype="Connector" uid="Connector-99" startpinid="Push-40-switch0pinN" endpinid="Node-44-0" pointList="-280,-144,-232,-144,-232,-104" />
+<item itemtype="Connector" uid="Connector-99" startpinid="Push-40-switch0pinN" endpinid="Node-44-0" pointList="-280,-176,-232,-176,-232,-104" />
 
-<item itemtype="Connector" uid="Connector-102" startpinid="mega328-8-PORTB2" endpinid="Push-45-pinP0" pointList="-384,-76,-312,-76,-312,-72" />
+<item itemtype="Connector" uid="Connector-102" startpinid="mega328-8-PORTB2" endpinid="Push-45-pinP0" pointList="-384,-76,-312,-76,-312,-84" />
 
-<item itemtype="Connector" uid="Connector-103" startpinid="Push-45-switch0pinN" endpinid="Node-46-1" pointList="-280,-72,-232,-72,-232,-68" />
+<item itemtype="Connector" uid="Connector-103" startpinid="Push-45-switch0pinN" endpinid="Node-46-1" pointList="-280,-84,-232,-84,-232,-68" />
 
 <item itemtype="Connector" uid="Connector-104" startpinid="Node-44-2" endpinid="Node-46-0" pointList="-232,-104,-232,-68" />
 
