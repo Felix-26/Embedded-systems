@@ -1,0 +1,10 @@
+15:23:02 **** Incremental Build of configuration Debug for project newpro ****
+make -j16 all 
+arm-none-eabi-size  newpro.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5200	     92	   1900	   7192	   1c18	newpro.elf
+Finished building: default.size.stdout
+ 
+
+15:23:03 Build Finished. 0 errors, 0 warnings. (took 312ms)
+

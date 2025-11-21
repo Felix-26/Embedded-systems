@@ -1,0 +1,3 @@
+SWV ITM Data Console - ITM Port: 0
+SWV ITM Data Console - ITM Port: 1
+SWV ITM Data Console - ITM Port: 2

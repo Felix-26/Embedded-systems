@@ -1,0 +1,38 @@
+/*
+ * stm32f446xx.h
+ *
+ *  Created on: Nov 20, 2025
+ *      Author: felix
+ */
+
+#ifndef STM32F446XX_H_
+#define STM32F446XX_H_
+
+// GPIO base addresses AHB1 Bus
+
+#define GPIOA_BASEADDR		0x40020000U
+#define GPIOB_BASEADDR		0x40020400U
+#define GPIOC_BASEADDR		0x40020800U
+#define GPIOD_BASEADDR		0x40020C00U
+#define GPIOE_BASEADDR		0x40021000U
+#define GPIOF_BASEADDR		0x40021400U
+#define GPIOG_BASEADDR		0x40021800U
+#define GPIOH_BASEADDR		0x40021C00U
+
+// GPIO REGISTER STRUCTURE
+
+typedef struct {
+	volatile uint32_t MODER;		// gpio port mode register					(0x00)
+	volatile uint32_t OTYPER;		// gpio port output type register			(0x04)
+	volatile uint32_t OSPEEDER;		// gpio port output speed register			(0x08)
+	volatile uint32_t PUPDR;		// gpio port pull-up/pull-down register		(0x0C)
+	volatile uint32_t IDR;			// gpio port input data register			(0x10)
+	volatile uint32_t ODR;			// gpio port output data register			(0x14)
+	volatile uint32_t BSRR;			// gpio port bit set/reset register			(0x18)
+	volatile uint32_t LCKR;			// gpio port configuration lock register	(0x1C)
+	volatile uint32_t AFRL;			// gpio alternate function low register		(0x20)
+	volatile uint32_t AFRH;			// gpio alternate function high register	(0x24)
+} GPIO_RegDef_t;
+
+
+#endif /* STM32F446XX_H_ */
