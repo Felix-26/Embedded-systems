@@ -18,14 +18,46 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <stm32f446xx.h>
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
-
+#define LED_PIN 5
+#define BTN_PIN 13
 
 int main(void)
 {
-	printf("Hello SWV!\n");
-    for(;;);
+	// ENABLE GPIOA CLOCK
+	GPIOA_CLK_EN();
+	GPIOC_CLK_EN();
+	// SETTING OUTPUTMODE FOR MODER
+	// CLEARING 11 TH AND 10 TH BITS
+	GPIOA->MODER &= ~(0x3 << LED_PIN * 2);
+	// clearing gpioc moder for input mode
+	GPIOC->MODER &= ~(0X3 << BTN_PIN *2);
+	// SETTING 10TH BIT FOR GENERAL PURPOSE OUTPUT MODE
+	GPIOA->MODER |= (0X1 << LED_PIN*2);
+	// SETTING OUTPUT TYPE TO PUSH-PULL
+	GPIOA->OTYPER &= ~(0X1 << LED_PIN);
+	// CLEARING 11TH AND 10TH BITS
+	GPIOA->OSPEEDR &= ~(0X3 << LED_PIN*2);
+	// SETTING 10TH BIT
+	GPIOA->OSPEEDR |= (0X1 << LED_PIN*2);
+
+	GPIOA->PUPDR &= ~(0X3 << LED_PIN*2);
+	GPIOC->PUPDR &= ~(0X3 << BTN_PIN*2);
+	GPIOC->PUPDR |= (0X1 << BTN_PIN*2);
+
+
+	for(;;)
+	{
+		if(!(GPIOC->IDR & (1<<BTN_PIN)))
+		{
+			printf("button pressed!");
+			GPIOA->BSRR |= (1<<5);
+			//
+		}
+		else
+		{
+			GPIOA->BSRR |= (1<<21);
+		}
+	}
 }

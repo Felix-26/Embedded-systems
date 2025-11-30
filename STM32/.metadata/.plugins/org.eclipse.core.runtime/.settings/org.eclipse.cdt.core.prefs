@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
+macros/workspace=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<macros/>\r\n
 org.eclipse.cdt.core.taskPriorities=normal,normal,normal
 org.eclipse.cdt.core.taskTags=TODO,FIXME,XXX

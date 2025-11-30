@@ -1,30 +1,25 @@
-18:00:42 **** Clean-only build of configuration Debug for project newpro2 ****
-make -j16 clean 
-rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
-rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
-rm -rf default.size.stdout newpro2.elf newpro2.list newpro2.map
- 
-18:00:50 **** Build of configuration Debug for project newpro2 ****
+22:06:04 **** Incremental Build of configuration Debug for project LM35_temp ****
 make -j16 all 
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "newpro2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\felix\Desktop\entri\STM32\newpro2\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="newpro2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: newpro2.elf
+../Src/main.c: In function 'main':
+../Src/main.c:54:45: warning: multi-character character constant [-Wmultichar]
+   54 |                 printf("T : %.3f%cC\n",temp,'°');
+      |                                             ^~~
+arm-none-eabi-gcc -o "LM35_temp.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\felix\Desktop\entri\STM32\LM35_temp\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LM35_temp.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LM35_temp.elf
  
-arm-none-eabi-size  newpro2.elf 
-arm-none-eabi-objdump -h -S newpro2.elf  > "newpro2.list"
+arm-none-eabi-size  LM35_temp.elf 
+arm-none-eabi-objdump -h -S LM35_temp.elf  > "LM35_temp.list"
    text	   data	    bss	    dec	    hex	filename
-   3468	     92	   1900	   5460	   1554	newpro2.elf
+  23432	    456	   1904	  25792	   64c0	LM35_temp.elf
 Finished building: default.size.stdout
  
-Finished building: newpro2.list
+Finished building: LM35_temp.list
  
-18:00:57 **** Incremental Build of configuration Debug for project newpro2 ****
+22:06:11 **** Incremental Build of configuration Debug for project LM35_temp ****
 make -j16 all 
-arm-none-eabi-size  newpro2.elf 
+arm-none-eabi-size  LM35_temp.elf 
    text	   data	    bss	    dec	    hex	filename
-   3468	     92	   1900	   5460	   1554	newpro2.elf
+  23432	    456	   1904	  25792	   64c0	LM35_temp.elf
 Finished building: default.size.stdout
  

@@ -50,8 +50,7 @@ void ITM_SendChar(uint8_t ch)
         return;
 
     // Wait until we can write
-    while (!(ITM_STIM0 & 1))
-        ;
+    while (!(ITM_STIM0 & 1));
 
     ITM_STIM0 = ch;
 }
@@ -113,22 +112,6 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
   }
   return len;
 }
-
-//__attribute__((weak)) int _write(int file, char *ptr, int len)
-//{
-//    static uint8_t initialized = 0;
-//
-//    if (!initialized)
-//    {
-//        ITM_Init();
-//        initialized = 1;
-//    }
-//
-//    for (int i = 0; i < len; i++)
-//        ITM_SendChar(ptr[i]);
-//
-//    return len;
-//}
 
 
 int _close(int file)
