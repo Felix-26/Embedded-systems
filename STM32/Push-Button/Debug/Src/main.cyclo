@@ -1,0 +1,5 @@
+../Src/main.c:26:6:EXTI15_10_IRQHandler	2
+../Src/main.c:36:6:set_input	1
+../Src/main.c:45:6:set_output	1
+../Src/main.c:53:6:set_interrupt	1
+../Src/main.c:71:5:main	1
