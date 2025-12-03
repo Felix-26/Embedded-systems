@@ -1,0 +1,10 @@
+../Src/main.c:55:6:TIM2_IRQHandler	2
+../Src/main.c:64:6:EXTI15_10_IRQHandler	4
+../Src/main.c:77:6:timer2_init	1
+../Src/main.c:90:6:led_en	1
+../Src/main.c:98:6:toggle_led	1
+../Src/main.c:104:6:analog_LM35_init	1
+../Src/main.c:125:6:temp_print	2
+../Src/main.c:138:6:set_input	1
+../Src/main.c:160:6:fsm	5
+../Src/main.c:179:5:main	1
