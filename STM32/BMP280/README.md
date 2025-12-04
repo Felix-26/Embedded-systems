@@ -76,8 +76,3 @@ The core data flow inside the infinite loop (`main.c`) is:
 
 ---
 
-## ⚠️ Known Issues / Required Fixes
-
-1.  **Missing System Clock:** The project must include a system clock initialization function (e.g., `SystemInit()`) to ensure **`f_PCLK1` is actually 42 MHz**. Without this, all timing will be incorrect.
-2.  **Missing Timer Reset:** If the timer interrupt approach is used, the **`TIM2_IRQHandler`** must clear the **UIF (Update Interrupt Flag)** in the Status Register (`TIM2->SR &= ~(1<<UIF);`) to allow future interrupts. This step is missing in the provided `timer.c` (if that file were used).
-3.  **Busy-Wait Loop:** The current version of `main.c` uses a simple **busy-wait loop** (`for(int i=0;i<1000000;i++);`) for delay, which is not timing-accurate and consumes 100% of the CPU. For timing control, the implemented `timer.c` should be used (refer to the other version of `main.c`).
