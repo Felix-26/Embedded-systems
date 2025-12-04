@@ -21,17 +21,23 @@
 #include <stdlib.h>
 #include "i2c.h"
 #include "BMP280.h"
+#include "timer.h"
 
+extern volatile uint8_t time;
 
 int main(void)
 {
     i2c_init();
     temp_init();
+    timer2_init();
     pres_init();
 	for(;;)
 	{
-		printf("T : %.3f %cC\n",get_temp(),'\u00B0');
-		printf("P : %.3f hPa\n\n",get_pres()/100.0);
-		for(int i=0;i<1000000;i++);
+		if(time==1)
+		{
+			printf("T : %.3f %cC\n",get_temp(),'\u00B0');
+			printf("P : %.3f hPa\n\n",get_pres()/100.0);
+			time = 0;
+		}
 	}
 }

@@ -8,6 +8,7 @@
 #ifndef STM32F446XX_H_
 #define STM32F446XX_H_
 
+#include <stdint.h>
 // GPIO base addresses AHB1 Bus
 
 #define GPIOA_BASEADDR		0x40020000U
