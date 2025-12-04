@@ -1,0 +1,7 @@
+../Src/BMP280.c:33:6:temp_init	16	static
+../Src/BMP280.c:55:6:pres_init	16	static
+../Src/BMP280.c:89:10:get_adc_T	16	static
+../Src/BMP280.c:97:10:get_adc_P	16	static
+../Src/BMP280.c:105:13:get_t_fine	48	static
+../Src/BMP280.c:119:8:get_temp	16	static
+../Src/BMP280.c:126:8:get_pres	48	static
