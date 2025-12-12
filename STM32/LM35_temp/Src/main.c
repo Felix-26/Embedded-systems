@@ -19,39 +19,49 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "stm32f446xx.h"
+#include "stm32f446xx_adc_driver.h"
 
 // SET PA0 AS ANALOG
 #define PA0 0
-// ADC_CR2
-#define ADON 0
-#define CONT 1
-#define DMA 8
-#define DDS 9
-#define SWSTART 30
-// ADC_SR
-#define EOC 1
-// RCC_APB2
+// RCC bits
 #define ADC1EN 8
+
+ADC_Handle_t ADC1_Handle;
 
 
 int main(void)
 {
-	GPIOA_CLK_EN();
+	// GPIOA PERIPHERAL CLOCK
+	GPIOA_PCLK_EN();
+	// Analog mode
 	GPIOA->MODER |= (0X3<<(PA0*2));
+	// ADC clock
 	RCC->APB2ENR |= (1<<ADC1EN);
-	ADC1->SQR3 = 0;
-	ADC1->SQR1 = 0;
-	ADC1->SMPR2 |= (0X7<<0);
-	ADC1->CR2 |= (1<<ADON);
-	ADC1->CR2 |= (1<<CONT);
-	ADC1->CR2 |= (1<<SWSTART);
-    /* Loop forever */
+	ADC1_Handle.pADCx = ADC1;
+	ADC1_Handle.ADC_Config.Seq_Len = 0;
+	ADC1_Handle.ADC_Config.Seq_Channel16_13 = 0;
+	ADC1_Handle.ADC_Config.Seq_Channel12_7 = 0;
+	ADC1_Handle.ADC_Config.Seq_Channel6_1 = 0;
+	ADC1_Handle.ADC_Config.smpr1 = 0;
+	ADC1_Handle.ADC_Config.smpr2 = (0x7<<0);
+	ADC_Init(&ADC1_Handle);
+
 	for(;;)
 	{
-		while(!(ADC1->SR & (1<<EOC)));
-		uint16_t dr = ADC1->DR;
+		uint16_t dr = ADC_Read(ADC1);
+		// temperature conversion
 		float temp = ((dr*3.3) / 4095.0)*100.0;
 		printf("T : %.3f%cC\n",temp,'°');
+		// delay
 		for(int i=0;i<1000000;i++);
 	}
 }
+
+
+
+
+
+
+
+
+

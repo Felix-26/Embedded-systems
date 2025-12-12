@@ -401,7 +401,9 @@ typedef struct
 #define ADC1								((ADC_RegDef_t *)(ADC1_BASEADDR))
 #define ADC2								((ADC_RegDef_t *)(ADC2_BASEADDR))
 #define ADC3								((ADC_RegDef_t *)(ADC3_BASEADDR))
-#define ADC_COMM							((ADC_Common_RegDef *)(ADC_COMMON_BASEADDR));
+#define ADC_COMM							((ADC_Common_RegDef *)(ADC_COMMON_BASEADDR))
+
+
 /**********************************Clock Enable Macros **********************************/
 
 /*
@@ -526,7 +528,6 @@ typedef struct
 #define ADC1_PCLK_DI()						(RCC->APB2ENR &= ~(1 << 8))
 #define ADC2_PCLK_DI()						(RCC->APB2ENR &= ~(1 << 9))
 #define ADC3_PCLK_DI()						(RCC->APB2ENR &= ~(1 << 10))
-
 
 /**********************************Peripheral Reset Macros **********************************/
 
