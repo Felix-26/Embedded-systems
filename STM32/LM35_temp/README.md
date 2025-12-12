@@ -29,12 +29,3 @@ The application configures **PA0** to Analog mode and performs a simple scaling 
 | `stm32f446xx.h` | Defines peripheral base addresses, register maps, and clock control macros. |
 | `main.c` | The main application loop: GPIO setup, ADC initialization, and continuous data acquisition. |
 
-## 🚀 Getting Started
-
-1.  **Clone** this repository and integrate the source files into your bare-metal C project environment.
-2.  **Build** the project using an ARM GCC toolchain, ensuring your linker script is correctly configured.
-3.  **Flash** the executable to the STM32F446xx board.
-4.  Monitor the output to see continuous, raw, or scaled ADC readings.
-
----
-*Built for learning and maximizing peripheral control.*
