@@ -10,5 +10,3 @@ lcd.c
 
 main.c
 
-timer.c
-
