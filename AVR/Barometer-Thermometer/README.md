@@ -1,3 +1,6 @@
+
+demo link - https://youtu.be/IpLHLLHpiFo
+
 ## 🌡️ Atmospheric Monitor (Barometer/Thermometer) 📈
 
 This repository contains the firmware for an embedded system based on an AVR microcontroller (e.g., ATmega328P) that measures and displays atmospheric pressure and temperature using the **Bosch BMP280** sensor and an **HD44780-compatible LCD**.
