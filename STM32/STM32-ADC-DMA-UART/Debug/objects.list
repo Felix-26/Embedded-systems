@@ -1,0 +1,6 @@
+"./Src/main.o"
+"./Src/stm32f446xx_ADC_driver.o"
+"./Src/stm32f446xx_TIM_driver.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f446retx.o"
