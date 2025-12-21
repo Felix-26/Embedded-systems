@@ -1,5 +1,0 @@
-../Src/stm32f446xx_TIM_driver.c:11:6:TIM_PeriClockControl	10
-../Src/stm32f446xx_TIM_driver.c:38:6:TIM_Init	1
-../Src/stm32f446xx_TIM_driver.c:50:6:TIM_DeInit	5
-../Src/stm32f446xx_TIM_driver.c:62:6:TIM_Trigger_config	1
-../Src/stm32f446xx_TIM_driver.c:68:6:TIM_Counter_Start	1

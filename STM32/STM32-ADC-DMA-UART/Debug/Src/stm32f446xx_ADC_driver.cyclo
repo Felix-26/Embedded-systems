@@ -1,4 +1,0 @@
-../Src/stm32f446xx_ADC_driver.c:12:6:ADC_PeriClockControl	8
-../Src/stm32f446xx_ADC_driver.c:29:6:ADC_Init	1
-../Src/stm32f446xx_ADC_driver.c:64:10:ADC_Read	2
-../Src/stm32f446xx_ADC_driver.c:72:6:ADC_External_Trigger	1

@@ -5,23 +5,29 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Src/ADC.c \
+../Src/DMA.c \
+../Src/TIM.c \
+../Src/USART.c \
 ../Src/main.c \
-../Src/stm32f446xx_ADC_driver.c \
-../Src/stm32f446xx_TIM_driver.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c 
 
 OBJS += \
+./Src/ADC.o \
+./Src/DMA.o \
+./Src/TIM.o \
+./Src/USART.o \
 ./Src/main.o \
-./Src/stm32f446xx_ADC_driver.o \
-./Src/stm32f446xx_TIM_driver.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o 
 
 C_DEPS += \
+./Src/ADC.d \
+./Src/DMA.d \
+./Src/TIM.d \
+./Src/USART.d \
 ./Src/main.d \
-./Src/stm32f446xx_ADC_driver.d \
-./Src/stm32f446xx_TIM_driver.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d 
 
@@ -33,7 +39,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/stm32f446xx_ADC_driver.cyclo ./Src/stm32f446xx_ADC_driver.d ./Src/stm32f446xx_ADC_driver.o ./Src/stm32f446xx_ADC_driver.su ./Src/stm32f446xx_TIM_driver.cyclo ./Src/stm32f446xx_TIM_driver.d ./Src/stm32f446xx_TIM_driver.o ./Src/stm32f446xx_TIM_driver.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+	-$(RM) ./Src/ADC.cyclo ./Src/ADC.d ./Src/ADC.o ./Src/ADC.su ./Src/DMA.cyclo ./Src/DMA.d ./Src/DMA.o ./Src/DMA.su ./Src/TIM.cyclo ./Src/TIM.d ./Src/TIM.o ./Src/TIM.su ./Src/USART.cyclo ./Src/USART.d ./Src/USART.o ./Src/USART.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
 
 .PHONY: clean-Src
 

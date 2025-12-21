@@ -18,60 +18,81 @@
 
 #include <stdint.h>
 #include <stdio.h>
+
+#include "TIM.h"
+#include "ADC.h"
+#include "DMA.h"
+#include "USART.h"
 #include "stm32f446xx.h"
-#include "stm32f446xx_ADC_driver.h"
-#include "stm32f446xx_TIM_driver.h"
 
-#define PA0 0
+#define SAMPLES 100
 
-void ADC_Inits(ADC_Handle_t *ADC_Handle)
+// double buffer
+uint16_t adc_buffer[SAMPLES*2];
+
+void DMA2_Stream0_IRQHandler(void)
 {
-	ADC_Handle->pADCx = ADC1;
-	ADC_Handle->ADC_Config.Seq_Len = 0;
-	ADC_Handle->ADC_Config.Seq_Channel12_7 = 0;
-	ADC_Handle->ADC_Config.Seq_Channel16_13 = 0;
-	ADC_Handle->ADC_Config.Seq_Channel6_1 = 0;
-	ADC_Handle->ADC_Config.smpr1 = 0;
-	ADC_Handle->ADC_Config.smpr2 = (0x7 << 0);
-	ADC_Init(ADC_Handle);
+	// transfer complete interrupt flag set or not
+	if(DMA2->LISR & (1<<5))
+	{
+		// clear transfer complete flag
+		DMA2->LIFCR |= (1<<5);
+		// if current target is set DMA is writing to buffer 1
+		if(DMA2->S[0].CR & (1<<19))
+			// change the DMA memread location to start of the buffer
+			DMA1->S[6].M0AR = (uint32_t)adc_buffer;
+		// if 0 dma is writing in buffer 0
+		else if(!(DMA2->S[0].CR & (1<<19)))
+			// change dma read location to 2nd buffer location
+			DMA1->S[6].M0AR = (uint32_t)&adc_buffer[SAMPLES];
+
+		// disable dma1
+		DMA1->S[6].CR &= ~(1 << 0);
+		while(DMA1->S[6].CR & (1 << 0));
+
+		// clearing dma 1 interrupt flags
+		DMA1->HIFCR |= (0x3D << 16);
+
+		// no of data to be transferred set to 200 bytes
+		DMA1->S[6].NDTR = SAMPLES*2;
+		// restart dma1
+		DMA1->S[6].CR |= (1 << 0);
+	}
 }
 
-void TIM_Inits(TIM_Handle_t *TIM_Handle)
+void GPIO_init(void)
 {
-	TIM_Handle->pTIMx = TIM3;
-	TIM_Handle->TIM_Config.Prescalar = 159;
-	TIM_Handle->TIM_Config.Period = 999;
-	TIM_Trigger_config(TIM3,TIM_TRIGGER_ON_UPDATE);
+	GPIOA_PCLK_EN();
+	// 2. Set PA2 to Alternate Function Mode (10)
+	GPIOA->MODER &= ~(0x3 << (2 * 2));
+	GPIOA->MODER |= (0x2 << (2 * 2));
+
+	GPIOA->OSPEEDR |= (0x3 << (2 * 2)); // High speed PA2
+
+
+	// 3. Map PA2 to AF7 (USART2) in AFR[0] (Low Register)
+	// Each pin takes 4 bits, so PA2 starts at bit 8
+	GPIOA->AFR[0] &= ~(0xF << (2 * 4));
+	GPIOA->AFR[0] |= (0x7 << (2 * 4));
+	// PA0 in anlog mode
+	GPIOA->MODER |= (0X3 << (0*2));
 }
 
 int main(void)
 {
-	ADC_Handle_t ADC_1;
-	TIM_Handle_t TIM_3;
-	// GPIOA PERIPHERAL CLOCK
-	GPIOA_PCLK_EN();
-	// Analog mode
-	GPIOA->MODER |= (0X3<<(PA0*2));
-	//ADC_Inits(&ADC_1);
-		ADC_1.pADCx = ADC1;
-		ADC_1.ADC_Config.Seq_Len = 0;
-		ADC_1.ADC_Config.Seq_Channel12_7 = 0;
-		ADC_1.ADC_Config.Seq_Channel16_13 = 0;
-		ADC_1.ADC_Config.Seq_Channel6_1 = 0;
-		ADC_1.ADC_Config.smpr1 = 0;
-		ADC_1.ADC_Config.smpr2 = (0x7 << 0);
-		ADC_Init(&ADC_1);
-	//TIM_Inits(&TIM_3);
-		TIM_3.pTIMx = TIM3;
-		TIM_3.TIM_Config.Prescalar = 159;
-		TIM_3.TIM_Config.Period = 999;
-		TIM_Trigger_config(TIM3,TIM_TRIGGER_ON_UPDATE);
-	TIM_Counter_Start(TIM_3.pTIMx);
-	ADC_External_Trigger(ADC_1.pADCx);
-	for(;;)
-	{
-		uint16_t dr = ADC1->DR;
-		float temp = ((dr*3.3) / 4095.0)*100.0;
-		printf("T : %.3f%cC\n",temp,'°');
-	}
+	// intializing peripherals
+	GPIO_init();
+	USART_init();
+	DMA2_init(adc_buffer);
+	DMA1_init();
+	ADC_init();
+	ADC_Read();
+	TIM_init();
+	TIM_start();
+	USART_start();
+	// loop
+	for(;;);
 }
+
+
+
