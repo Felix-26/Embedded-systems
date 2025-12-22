@@ -4,7 +4,7 @@ This project implements a high-performance data acquisition system on the **STM3
 
 ---
 
-## ## Key Features
+ ## Key Features
 
 * **Hardware Triggering:** Timer 2 (TRGO) triggers ADC conversions at 100Hz, ensuring precise sampling intervals without CPU intervention.
 * **Double Buffering:** DMA2 is configured in Double Buffer Mode (DBM) to switch between two memory locations (`M0AR` and `M1AR`), preventing data overwriting during processing.
@@ -13,7 +13,7 @@ This project implements a high-performance data acquisition system on the **STM3
 
 ---
 
-## ## Project Structure
+ ## Project Structure
 
 | File | Description |
 | --- | --- |
@@ -26,14 +26,14 @@ This project implements a high-performance data acquisition system on the **STM3
 
 ---
 
-## ## Peripheral Configuration
+ ## Peripheral Configuration
 
-### ### ADC & Timer (Sampling)
+ ### ADC & Timer (Sampling)
 
 * **Timer 2:** Prescaler (PSC) is set to 1599 and Auto-Reload Register (ARR) to 99. With a 16MHz clock, this results in a **100Hz** trigger frequency.
 * **ADC1:** Configured for 12-bit resolution and set to be triggered by the **Timer 2 TRGO** event on the rising edge.
 
-### ### DMA Settings
+ ### DMA Settings
 
 * **DMA2 (Stream 0, Channel 0):** * **Direction:** Peripheral-to-Memory (ADC1 Data Register  `adc_buffer`).
 * **Mode:** Double Buffer Mode (DBM) with circular addressing.
@@ -47,14 +47,14 @@ This project implements a high-performance data acquisition system on the **STM3
 
 
 
-### ### USART
+ ### USART
 
 * **Baud Rate:** Set to 115200 (BRR = 0x008B).
 * **Pinout:** PA2 (TX) is configured in Alternate Function Mode (AF7).
 
 ---
 
-## ## How It Works
+ ## How It Works
 
 1. **Initialization:** The system initializes GPIOs, USART, DMA2 (ADC-side), DMA1 (USART-side), and the ADC.
 2. **Sampling:** Timer 2 is started, sending a Master Mode trigger pulse to ADC1 every 10ms.
@@ -64,7 +64,7 @@ This project implements a high-performance data acquisition system on the **STM3
 
 ---
 
-## ## Hardware Requirements
+ ## Hardware Requirements
 
 * **Microcontroller:** STM32F446xx.
 * **Input Pin:** Analog signal on **PA0**.
