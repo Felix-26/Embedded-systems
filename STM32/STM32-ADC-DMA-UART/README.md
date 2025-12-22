@@ -62,7 +62,10 @@ This project implements a high-performance data acquisition system on the **STM3
 4. **Interrupt:** When a buffer of 100 samples is full, the `DMA2_Stream0_IRQHandler` is triggered.
 5. **Transmission:** The ISR identifies which buffer was just completed, updates the DMA1 memory source address accordingly, and restarts DMA1 to send that block of data via USART2.
 
-![System Block Diagram]('block diagram.png')
+---
+
+![System Block Diagram](block diagram.png)
+
 ---
 
  ## Hardware Requirements
@@ -71,4 +74,4 @@ This project implements a high-performance data acquisition system on the **STM3
 * **Input Pin:** Analog signal on **PA0**.
 * **Output Pin:** Serial data transmission on **PA2** (USART2 TX).
 
-Would you like me to provide a Python script to visualize this ADC data on your computer?
+---
