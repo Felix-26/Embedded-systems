@@ -1,3 +1,8 @@
+
+# DEMO Link 
+
+https://youtu.be/K-K8syPLuLA?si=oO-iFcJ4UkV8AaHN 
+
 # STM32F446 ADC Data Acquisition with DMA & USART
 
 This project implements a high-performance data acquisition system on the **STM32F446RE** microcontroller. It uses **Timer 2** to trigger **ADC1** conversions at a fixed frequency, transfers the data into a double buffer using **DMA2**, and subsequently offloads that data to **USART2** via **DMA1**.
