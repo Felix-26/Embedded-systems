@@ -64,7 +64,7 @@ This project implements a high-performance data acquisition system on the **STM3
 
 ---
 
-![System Block Diagram](block diagram.png)
+![System Block Diagram](block_diagram.png)
 
 ---
 
