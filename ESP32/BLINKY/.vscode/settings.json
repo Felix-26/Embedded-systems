@@ -1,0 +1,20 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPathWin": "c:\\Users\\felix\\ESP32\\idf\\v6.0\\esp-idf",
+  "idf.pythonInstallPath": "C:\\Users\\felix\\ESP32\\tools\\tools\\idf-python\\3.11.2\\python.exe",
+  "idf.openOcdConfigs": [
+    "board/esp32-wrover-kit-3.3v.cfg"
+  ],
+  "idf.portWin": "COM6",
+  "idf.toolsPathWin": "C:\\Users\\felix\\ESP32\\tools",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32"
+  },
+  "clangd.path": "C:\\Users\\felix\\ESP32\\tools\\tools\\esp-clang\\esp-20.1.1_20250829\\esp-clang\\bin\\clangd.exe",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=c:\\Users\\felix\\Desktop\\entri\\ESP32\\BLINKY\\build"
+  ],
+  "idf.flashType": "UART"
+}
